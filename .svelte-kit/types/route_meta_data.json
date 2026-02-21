@@ -1,0 +1,43 @@
+{
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/about": [
+		"src/routes/+layout.ts"
+	],
+	"/contact": [
+		"src/routes/+layout.ts"
+	],
+	"/media": [
+		"src/routes/+layout.ts"
+	],
+	"/programs": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/one-on-one": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/specialized": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/specialized/apraxia": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/specialized/dyslexia": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/specialized/pots": [
+		"src/routes/+layout.ts"
+	],
+	"/programs/weekly-chats": [
+		"src/routes/+layout.ts"
+	],
+	"/resources": [
+		"src/routes/+layout.ts"
+	],
+	"/resources/speech-journey": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	]
+}

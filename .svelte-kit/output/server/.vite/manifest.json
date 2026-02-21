@@ -1,0 +1,411 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "name": "internal",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_root.js",
+      "_environment.js",
+      "_internal.js"
+    ]
+  },
+  "_Button.js": {
+    "file": "chunks/Button.js",
+    "name": "Button",
+    "imports": [
+      "_index.js",
+      "_Container.js"
+    ]
+  },
+  "_Card2.js": {
+    "file": "chunks/Card2.js",
+    "name": "Card",
+    "imports": [
+      "_index.js",
+      "_card.js",
+      "_Container.js"
+    ]
+  },
+  "_Container.js": {
+    "file": "chunks/Container.js",
+    "name": "Container",
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "_FeatureCard.js": {
+    "file": "chunks/FeatureCard.js",
+    "name": "FeatureCard",
+    "imports": [
+      "_index.js",
+      "_Card2.js",
+      "_Icon.js"
+    ]
+  },
+  "_Heading.js": {
+    "file": "chunks/Heading.js",
+    "name": "Heading",
+    "imports": [
+      "_index.js",
+      "_Container.js"
+    ]
+  },
+  "_Icon.js": {
+    "file": "chunks/Icon.js",
+    "name": "Icon",
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "_Section.js": {
+    "file": "chunks/Section.js",
+    "name": "Section",
+    "imports": [
+      "_index.js",
+      "_Container.js"
+    ]
+  },
+  "_card.js": {
+    "file": "chunks/card.js",
+    "name": "card",
+    "imports": [
+      "_index.js",
+      "_Container.js"
+    ]
+  },
+  "_environment.js": {
+    "file": "chunks/environment.js",
+    "name": "environment"
+  },
+  "_exports.js": {
+    "file": "chunks/exports.js",
+    "name": "exports",
+    "imports": [
+      "_index.js",
+      "_root.js"
+    ]
+  },
+  "_external-link.js": {
+    "file": "chunks/external-link.js",
+    "name": "external-link",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_false.js": {
+    "file": "chunks/false.js",
+    "name": "false"
+  },
+  "_index.js": {
+    "file": "chunks/index.js",
+    "name": "index"
+  },
+  "_instagram.js": {
+    "file": "chunks/instagram.js",
+    "name": "instagram",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "name": "internal",
+    "imports": [
+      "_root.js",
+      "_environment.js"
+    ]
+  },
+  "_media.js": {
+    "file": "chunks/media.js",
+    "name": "media",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_root.js": {
+    "file": "chunks/root.js",
+    "name": "root",
+    "imports": [
+      "_index.js",
+      "_false.js"
+    ]
+  },
+  "_separator.js": {
+    "file": "chunks/separator.js",
+    "name": "separator",
+    "imports": [
+      "_index.js",
+      "_Container.js"
+    ]
+  },
+  "_shared.js": {
+    "file": "chunks/shared.js",
+    "name": "shared",
+    "imports": [
+      "_utils.js"
+    ]
+  },
+  "_utils.js": {
+    "file": "chunks/utils.js",
+    "name": "utils"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
+    "file": "remote-entry.js",
+    "name": "remote-entry",
+    "src": "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js",
+    "isEntry": true,
+    "imports": [
+      "_shared.js",
+      "_false.js",
+      "_environment.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "name": "entries/fallbacks/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_exports.js",
+      "_root.js",
+      "_utils.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "name": "index",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_false.js",
+      "_environment.js",
+      "_shared.js",
+      "_exports.js",
+      "_utils.js",
+      "_internal.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "name": "entries/pages/_layout.svelte",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_Icon.js",
+      "_instagram.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.Dc3TB1Lg.css"
+    ]
+  },
+  "src/routes/+layout.ts": {
+    "file": "entries/pages/_layout.ts.js",
+    "name": "entries/pages/_layout.ts",
+    "src": "src/routes/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "name": "entries/pages/_page.svelte",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_FeatureCard.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js",
+      "_media.js"
+    ]
+  },
+  "src/routes/about/+page.svelte": {
+    "file": "entries/pages/about/_page.svelte.js",
+    "name": "entries/pages/about/_page.svelte",
+    "src": "src/routes/about/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_card.js",
+      "_Icon.js",
+      "_instagram.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/contact/+page.svelte": {
+    "file": "entries/pages/contact/_page.svelte.js",
+    "name": "entries/pages/contact/_page.svelte",
+    "src": "src/routes/contact/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Card2.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_external-link.js"
+    ]
+  },
+  "src/routes/media/+page.svelte": {
+    "file": "entries/pages/media/_page.svelte.js",
+    "name": "entries/pages/media/_page.svelte",
+    "src": "src/routes/media/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Container.js",
+      "_Section.js",
+      "_Card2.js",
+      "_media.js"
+    ]
+  },
+  "src/routes/programs/+page.svelte": {
+    "file": "entries/pages/programs/_page.svelte.js",
+    "name": "entries/pages/programs/_page.svelte",
+    "src": "src/routes/programs/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_FeatureCard.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/one-on-one/+page.svelte": {
+    "file": "entries/pages/programs/one-on-one/_page.svelte.js",
+    "name": "entries/pages/programs/one-on-one/_page.svelte",
+    "src": "src/routes/programs/one-on-one/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Card2.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/specialized/+page.svelte": {
+    "file": "entries/pages/programs/specialized/_page.svelte.js",
+    "name": "entries/pages/programs/specialized/_page.svelte",
+    "src": "src/routes/programs/specialized/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_FeatureCard.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/specialized/apraxia/+page.svelte": {
+    "file": "entries/pages/programs/specialized/apraxia/_page.svelte.js",
+    "name": "entries/pages/programs/specialized/apraxia/_page.svelte",
+    "src": "src/routes/programs/specialized/apraxia/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_card.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/specialized/dyslexia/+page.svelte": {
+    "file": "entries/pages/programs/specialized/dyslexia/_page.svelte.js",
+    "name": "entries/pages/programs/specialized/dyslexia/_page.svelte",
+    "src": "src/routes/programs/specialized/dyslexia/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/specialized/pots/+page.svelte": {
+    "file": "entries/pages/programs/specialized/pots/_page.svelte.js",
+    "name": "entries/pages/programs/specialized/pots/_page.svelte",
+    "src": "src/routes/programs/specialized/pots/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/programs/weekly-chats/+page.svelte": {
+    "file": "entries/pages/programs/weekly-chats/_page.svelte.js",
+    "name": "entries/pages/programs/weekly-chats/_page.svelte",
+    "src": "src/routes/programs/weekly-chats/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_card.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js"
+    ]
+  },
+  "src/routes/resources/+page.svelte": {
+    "file": "entries/pages/resources/_page.svelte.js",
+    "name": "entries/pages/resources/_page.svelte",
+    "src": "src/routes/resources/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Button.js",
+      "_Card2.js",
+      "_Container.js",
+      "_Heading.js",
+      "_Section.js",
+      "_separator.js",
+      "_external-link.js"
+    ]
+  },
+  "src/routes/resources/speech-journey/+layout.svelte": {
+    "file": "entries/pages/resources/speech-journey/_layout.svelte.js",
+    "name": "entries/pages/resources/speech-journey/_layout.svelte",
+    "src": "src/routes/resources/speech-journey/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Container.js",
+      "_Section.js"
+    ]
+  },
+  "src/routes/resources/speech-journey/+page.md": {
+    "file": "entries/pages/resources/speech-journey/_page.md.js",
+    "name": "entries/pages/resources/speech-journey/_page.md",
+    "src": "src/routes/resources/speech-journey/+page.md",
+    "isEntry": true
+  }
+}
