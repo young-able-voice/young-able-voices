@@ -3,14 +3,85 @@
 	import { Card } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 	import { base } from '$app/paths';
+	import weeklyChats from '$lib/data/weekly-chats.json';
+	import { MessageSquare } from 'lucide-svelte';
+	import CommentSidebar from '$lib/components/CommentSidebar.svelte';
+
+	// Filter out invalid IDs or empty entries if any
+	const validChats = weeklyChats.filter(
+		(chat) => chat.driveId && chat.driveId !== 'YOUR_GOOGLE_DRIVE_VIDEO_ID_HERE'
+	);
+
+	let isSidebarOpen = $state(false);
+	let selectedChat = $state<{ title: string; driveId: string } | null>(null);
+
+	function openComments(chat: (typeof validChats)[0]) {
+		selectedChat = chat;
+		isSidebarOpen = true;
+	}
+
+	function handleClose() {
+		isSidebarOpen = false;
+		// Small delay to allow transition before unmounting if needed, 
+		// but since sidebar handles visibility with {#if open}, we can just set open=false.
+		// However, to ensure a fresh mount next time if we want to reset state completely:
+		// setTimeout(() => selectedChat = null, 300);
+	}
 </script>
 
 <svelte:head>
 	<title>Weekly Chats - Young Able Voices</title>
-	<meta name="description" content="Join our weekly video chats to connect with peers facing similar challenges." />
+	<meta
+		name="description"
+		content="Join our weekly video chats to connect with peers facing similar challenges."
+	/>
 </svelte:head>
 
 <Hero title="Weekly Chats & Videos" subtitle="Connect, share, and grow together" />
+
+{#if validChats.length > 0}
+	<Section class="bg-muted/30">
+		<Container>
+			<Heading class="mb-8">This Week's Videos</Heading>
+			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{#each validChats as chat}
+					<div class="flex h-full flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
+						<!-- 16:9 Aspect Ratio Container for Video -->
+						<div class="relative w-full bg-black pt-[56.25%]">
+							<iframe
+								src="https://drive.google.com/file/d/{chat.driveId}/preview"
+								class="absolute left-0 top-0 h-full w-full border-0"
+								allow="autoplay"
+								title={chat.title}
+								allowfullscreen
+							></iframe>
+						</div>
+						<div class="flex flex-1 flex-col p-6">
+							{#if chat.date}
+								<div class="mb-2 text-sm text-muted-foreground">{chat.date}</div>
+							{/if}
+							<h3 class="mb-3 text-xl font-semibold">{chat.title}</h3>
+							{#if chat.description}
+								<p class="flex-1 text-sm text-muted-foreground">{chat.description}</p>
+							{/if}
+							<div class="mt-4 flex items-center justify-end pt-4">
+								<Button variant="outline" size="sm" onclick={() => openComments(chat)}>
+									<MessageSquare class="mr-2 h-4 w-4" />
+									Comments
+								</Button>
+							</div>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</Container>
+	</Section>
+	<Separator />
+{/if}
+
+{#if selectedChat}
+	<CommentSidebar bind:open={isSidebarOpen} title={selectedChat.title} id={selectedChat.driveId} />
+{/if}
 
 <Section>
 	<Container size="sm">
@@ -70,7 +141,7 @@
 	<Container size="sm" class="text-center">
 		<Heading size="sm">Ready to Join?</Heading>
 		<p class="mt-4 leading-relaxed text-foreground/80">
-			Fill out our interest form and we'll get back to you with upcoming chat times and details.
+			To reach out to find about the next chat
 		</p>
 		<Button href="{base}/contact" class="mt-6"> Sign Up </Button>
 	</Container>

@@ -11,17 +11,24 @@
 	let { title, subtitle, ctaText, ctaHref }: Props = $props();
 </script>
 
-<section class="border-b py-16 md:py-20">
+<section class="border-b bg-blue-100/50 py-16 md:py-20 dark:bg-primary/20">
 	<Container>
 		<div class="mx-auto max-w-3xl text-center">
-			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+			<h1
+				class="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+			>
 				{title}
 			</h1>
 			{#if subtitle}
-				<p class="relative mt-4 inline-block text-lg font-medium text-accent-foreground md:text-xl">
-					<span class="absolute inset-0 blur-xl bg-accent-foreground/20"></span>
-					<span class="relative">{subtitle}</span>
-				</p>
+				<div class="mt-6 flex justify-center">
+					<p
+						class="relative inline-block max-w-2xl text-xl font-medium leading-relaxed text-yellow-600 md:text-2xl dark:text-yellow-400"
+					>
+						<!-- Soft glow behind the text for depth -->
+						<span class="absolute -inset-2 blur-2xl bg-yellow-200/60 dark:bg-yellow-900/40"></span>
+						<span class="relative">{subtitle}</span>
+					</p>
+				</div>
 			{/if}
 		</div>
 	</Container>

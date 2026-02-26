@@ -27,28 +27,28 @@
 
 {#if url}
 	<a href={url} target="_blank" rel="noopener noreferrer">
-		<Card hoverable class="h-full p-5">
+		<Card hoverable class="group h-full p-5">
 			<div class="mb-2 flex items-center gap-2">
 				{#if type === 'article'}
-					<Newspaper class="h-4 w-4 text-muted-foreground" />
+					<Newspaper class="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground/80 transition-colors" />
 				{:else if type === 'podcast'}
-					<Mic class="h-4 w-4 text-muted-foreground" />
+					<Mic class="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground/80 transition-colors" />
 				{:else}
-					<Video class="h-4 w-4 text-muted-foreground" />
+					<Video class="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground/80 transition-colors" />
 				{/if}
-				<span class="text-xs font-medium uppercase tracking-wider text-muted-foreground">{config.label}</span>
+				<span class="text-xs font-medium uppercase tracking-wider text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">{config.label}</span>
 			</div>
-			<h4 class="font-semibold">{title}</h4>
+			<h4 class="font-semibold transition-colors group-hover:text-accent-foreground">{title}</h4>
 			{#if source}
-				<p class="text-sm text-muted-foreground">{source}</p>
+				<p class="text-sm text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">{source}</p>
 			{/if}
 			{#if description}
-				<p class="mt-2 text-sm text-muted-foreground">{description}</p>
+				<p class="mt-2 text-sm text-muted-foreground group-hover:text-accent-foreground/80 transition-colors">{description}</p>
 			{/if}
 		</Card>
 	</a>
 {:else}
-	<Card class="h-full p-5">
+	<Card class="group h-full p-5">
 		<div class="mb-2 flex items-center gap-2">
 			{#if type === 'article'}
 				<Newspaper class="h-4 w-4 text-muted-foreground" />

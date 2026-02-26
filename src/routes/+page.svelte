@@ -12,7 +12,7 @@
 			title: 'Weekly Chats',
 			description: 'Join weekly video chats with peers facing similar challenges. Share, listen, and connect.',
 			href: `${base}/programs/weekly-chats`,
-			icon: '💬'
+			icon: '📅'
 		},
 		{
 			title: 'One-on-One Meetings',
@@ -54,7 +54,7 @@
 				</p>
 			</div>
 			<Button href="{base}/contact" size="lg" class="mt-8">
-				Join Us
+				Join!
 			</Button>
 		</div>
 	</Container>
@@ -83,25 +83,26 @@
 		</p>
 		<div class="mt-8 flex flex-wrap items-center justify-center gap-3">
 			{#each mediaData.featured as item}
-				<a
+				<Button
 					href={item.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent"
+					variant="outline"
+					size="sm"
 				>
 					{#if item.icon === 'video'}
-						<Video class="h-4 w-4" />
+						<Video class="mr-2 h-4 w-4" />
 					{:else if item.icon === 'podcast'}
-						<Mic class="h-4 w-4" />
+						<Mic class="mr-2 h-4 w-4" />
 					{:else}
-						<Newspaper class="h-4 w-4" />
+						<Newspaper class="mr-2 h-4 w-4" />
 					{/if}
 					{item.name}
-				</a>
+				</Button>
 			{/each}
 		</div>
 		<Button href="{base}/media" variant="outline" class="mt-8">
-			View All Media
+			See More!
 		</Button>
 	</Container>
 </Section>
@@ -112,7 +113,7 @@
 	<Container size="sm" class="text-center">
 		<Heading>Ready to Connect?</Heading>
 		<p class="mt-4 leading-relaxed text-foreground/80">
-			Hey Moms, Dads, and all you awesome adults—feel free to join your kiddos and tune in! Got questions or
+			Hey Moms, Dads, and all you awesome adults - feel free to join your kiddos and tune in! Got questions or
 			topic ideas? We'd love to hear from you!
 		</p>
 		<Button href="{base}/contact" size="lg" class="mt-8">

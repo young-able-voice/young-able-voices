@@ -2,6 +2,9 @@
 	import { Hero, Container, Section, Heading, ProfileCard } from '$lib/ui';
 	import { Separator } from '$lib/components/ui/separator';
 	import team from '$lib/data/team.json';
+
+	const founder = team[0];
+	const otherMembers = team.slice(1);
 </script>
 
 <svelte:head>
@@ -36,10 +39,16 @@
 <Section>
 	<Container>
 		<Heading class="mb-8">Meet Our Team</Heading>
-		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			{#each team as member}
-				<ProfileCard {...member} />
-			{/each}
+		<div class="space-y-12">
+			<!-- Founder Profile (Full Width) -->
+			<ProfileCard {...founder} orientation="horizontal" showImage={true} />
+
+			<!-- Other Team Members (Grid) -->
+			<div class="grid gap-8 sm:grid-cols-2">
+				{#each otherMembers as member}
+					<ProfileCard {...member} showImage={false} />
+				{/each}
+			</div>
 		</div>
 	</Container>
 </Section>
