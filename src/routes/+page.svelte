@@ -35,8 +35,8 @@
 </svelte:head>
 
 <Hero
-	title="A safe place for kids with hidden disabilities to connect, and know they aren't alone."
-	subtitle="Your future is bright."
+	image="/hero.jpg"
+	imageAlt="Young Able Voices - A safe place for kids with hidden disabilities"
 />
 
 <Section>
