@@ -3,20 +3,10 @@
   import { Card } from '$lib/components/ui/card';
   import { Separator } from '$lib/components/ui/separator';
   import { base } from '$app/paths';
-  import { MessageSquare } from 'lucide-svelte';
-  import CommentSidebar from '$lib/components/CommentSidebar.svelte';
   import VideoCard from '$lib/ui/VideoCard.svelte';
   export let data: { items: Array<{ title: string; url: string; thumbnail: string | null; publishedAt: string }> };
 
-  let isSidebarOpen = false;
-  let selectedChat: { title: string; url: string } | null = null;
-
   const items: Array<{ title: string; url: string; thumbnail: string | null; publishedAt: string }> = data?.items ?? [];
-
-  function openComments(chat: (typeof items)[0]) {
-    selectedChat = chat;
-    isSidebarOpen = true;
-  }
 </script>
 
 <svelte:head>
@@ -32,32 +22,14 @@
 {#if items.length > 0}
   <Section class="bg-muted/30">
     <Container>
-      <Heading class="mb-8">This Week's Videos</Heading>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each items as chat}
-          <div class="flex h-full flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
-            <div class="p-0">
-              <VideoCard title={chat.title} thumbnail={chat.thumbnail} url={chat.url} publishedAt={chat.publishedAt} />
-            </div>
-            <div class="flex flex-1 flex-col p-6">
-              <h3 class="mb-3 text-xl font-semibold">{chat.title}</h3>
-              <div class="mt-4 flex items-center justify-end pt-4">
-                <Button variant="outline" size="sm" onclick={() => openComments(chat)}>
-                  <MessageSquare class="mr-2 h-4 w-4" />
-                  Comments
-                </Button>
-              </div>
-            </div>
-          </div>
+          <VideoCard title={chat.title} thumbnail={chat.thumbnail} url={chat.url} publishedAt={chat.publishedAt} />
         {/each}
       </div>
     </Container>
   </Section>
   <Separator />
-{/if}
-
-{#if selectedChat}
-  <CommentSidebar bind:open={isSidebarOpen} title={selectedChat.title} id={selectedChat.url} />
 {/if}
 
 <Section>

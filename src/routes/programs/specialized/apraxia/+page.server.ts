@@ -3,29 +3,47 @@ import type { PageServerLoad } from './$types';
 const PLAYLIST_ID = 'PLVuD2Hl1loHDucE2JiZTiHX0u9U75iNcC';
 
 async function fetchPlaylist(playlistId: string) {
-  const url = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
-  const res = await fetch(url);
+  const url = `https://www.youtube.com/playlist?list=${playlistId}`;
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+  });
   if (!res.ok) return [];
-  const text = await res.text();
-  const entries: Array<any> = [];
-  const entryRe = /<entry>([\s\S]*?)<\/entry>/g;
-  let m;
-  while ((m = entryRe.exec(text)) !== null) {
-    const entry = m[1];
-    const titleMatch = entry.match(/<title>([\s\S]*?)<\/title>/);
-    const title = titleMatch ? titleMatch[1].trim() : 'Untitled';
-    const linkMatch = entry.match(/<link[^>]*href="([^"]+)"/);
-    const url = linkMatch ? linkMatch[1] : '';
-    const vidMatch = entry.match(/<yt:videoId>([\s\S]*?)<\/yt:videoId>/);
-    const videoId = vidMatch ? vidMatch[1].trim() : (url.split('v=')[1] || '');
-    const thumbMatch = entry.match(/<media:thumbnail[^>]*url="([^"]+)"/);
-    const thumbnail = thumbMatch ? thumbMatch[1] : (videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : null);
-    const pubMatch = entry.match(/<published>([\s\S]*?)<\/published>/);
-    const publishedAt = pubMatch ? pubMatch[1] : '';
-    entries.push({ title, url, thumbnail, publishedAt, videoId });
+  const html = await res.text();
+  
+  // Extract ytInitialData JSON from the page
+  const match = html.match(/var ytInitialData = ({.*?});<\/script>/);
+  if (!match) return [];
+  
+  try {
+    const data = JSON.parse(match[1]);
+    const contents = data?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents?.[0]?.playlistVideoListRenderer?.contents;
+    if (!contents) return [];
+    
+    const entries = contents
+      .filter((item: any) => item.playlistVideoRenderer)
+      .map((item: any) => {
+        const video = item.playlistVideoRenderer;
+        const videoId = video.videoId;
+        const title = video.title?.runs?.[0]?.text || 'Untitled';
+        const thumbnail = video.thumbnail?.thumbnails?.[video.thumbnail.thumbnails.length - 1]?.url || `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+        return {
+          title,
+          url: `https://www.youtube.com/watch?v=${videoId}`,
+          thumbnail,
+          publishedAt: '', // Not easily available from this data
+          videoId
+        };
+      })
+      .reverse(); // Reverse to get newest-to-oldest
+    
+    console.log(`[Apraxia Playlist] Fetched ${entries.length} videos from playlist ${playlistId}`);
+    return entries;
+  } catch (error) {
+    console.error('[Apraxia Playlist] Error parsing playlist data:', error);
+    return [];
   }
-  entries.sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
-  return entries;
 }
 
 export const load: PageServerLoad = async () => {
