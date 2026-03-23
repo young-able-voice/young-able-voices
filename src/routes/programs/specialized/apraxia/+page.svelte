@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { Hero, Container, Section, Heading, Button } from '$lib/ui';
-	import { Card } from '$lib/components/ui/card';
-	import { Separator } from '$lib/components/ui/separator';
-	import { base } from '$app/paths';
+  import { Hero, Container, Section, Heading, Button } from '$lib/ui';
+  import { Card } from '$lib/components/ui/card';
+  import { Separator } from '$lib/components/ui/separator';
+  import { base } from '$app/paths';
+  import VideoCard from '$lib/ui/VideoCard.svelte';
+  export let data;
 </script>
 
 <svelte:head>
@@ -54,11 +56,22 @@
 <Separator />
 
 <Section>
-	<Container size="sm" class="text-center">
-		<Heading size="sm">Join the Apraxia Chat</Heading>
-		<p class="mt-4 leading-relaxed text-foreground/80">
-			Ready to connect? Fill out our interest form and we'll send you details about upcoming sessions.
-		</p>
-		<Button href="{base}/contact" class="mt-6"> Sign Up </Button>
-	</Container>
+  <Container>
+    <Heading class="mb-4">{data.meta.name}</Heading>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {#each data.items as v}
+        <VideoCard title={v.title} thumbnail={v.thumbnail} url={v.url} publishedAt={v.publishedAt} />
+      {/each}
+    </div>
+  </Container>
+
+  <Separator />
+
+  <Container size="sm" class="text-center">
+    <Heading size="sm">Join the Apraxia Chat</Heading>
+    <p class="mt-4 leading-relaxed text-foreground/80">
+      Ready to connect? Fill out our interest form and we'll send you details about upcoming sessions.
+    </p>
+    <Button href="{base}/contact" class="mt-6"> Sign Up </Button>
+  </Container>
 </Section>

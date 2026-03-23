@@ -7,6 +7,7 @@ export { default as Heading } from './Heading.svelte';
 export { default as Hero } from './Hero.svelte';
 export { default as Logo } from './Logo.svelte';
 export { default as MediaCard } from './MediaCard.svelte';
+export { default as VideoCard } from './VideoCard.svelte';
 export { default as Prose } from './Prose.svelte';
 export { default as Section } from './Section.svelte';
 export { default as Text } from './Text.svelte';

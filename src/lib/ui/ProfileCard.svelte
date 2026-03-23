@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { Card } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 
@@ -32,7 +33,11 @@
 					? 'md:max-w-[300px]'
 					: ''}"
 			>
-				<img src={image} alt={name} class="h-full w-full object-cover" />
+				<img
+					src={image.startsWith('/') ? `${base}${image}` : image}
+					alt={name}
+					class="h-full w-full object-cover"
+				/>
 			</div>
 		{/if}
 		<div class="flex flex-col {orientation === 'horizontal' ? 'justify-center w-full' : ''}">

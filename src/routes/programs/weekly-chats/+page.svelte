@@ -1,32 +1,22 @@
 <script lang="ts">
-	import { Hero, Container, Section, Heading, Button } from '$lib/ui';
-	import { Card } from '$lib/components/ui/card';
-	import { Separator } from '$lib/components/ui/separator';
-	import { base } from '$app/paths';
-	import weeklyChats from '$lib/data/weekly-chats.json';
-	import { MessageSquare } from 'lucide-svelte';
-	import CommentSidebar from '$lib/components/CommentSidebar.svelte';
+  import { Hero, Container, Section, Heading, Button } from '$lib/ui';
+  import { Card } from '$lib/components/ui/card';
+  import { Separator } from '$lib/components/ui/separator';
+  import { base } from '$app/paths';
+  import { MessageSquare } from 'lucide-svelte';
+  import CommentSidebar from '$lib/components/CommentSidebar.svelte';
+  import VideoCard from '$lib/ui/VideoCard.svelte';
+  export let data: { items: Array<{ title: string; url: string; thumbnail: string | null; publishedAt: string }> };
 
-	// Filter out invalid IDs or empty entries if any
-	const validChats = weeklyChats.filter(
-		(chat) => chat.driveId && chat.driveId !== 'YOUR_GOOGLE_DRIVE_VIDEO_ID_HERE'
-	);
+  let isSidebarOpen = false;
+  let selectedChat: { title: string; url: string } | null = null;
 
-	let isSidebarOpen = $state(false);
-	let selectedChat = $state<{ title: string; driveId: string } | null>(null);
+  const items: Array<{ title: string; url: string; thumbnail: string | null; publishedAt: string }> = data?.items ?? [];
 
-	function openComments(chat: (typeof validChats)[0]) {
-		selectedChat = chat;
-		isSidebarOpen = true;
-	}
-
-	function handleClose() {
-		isSidebarOpen = false;
-		// Small delay to allow transition before unmounting if needed, 
-		// but since sidebar handles visibility with {#if open}, we can just set open=false.
-		// However, to ensure a fresh mount next time if we want to reset state completely:
-		// setTimeout(() => selectedChat = null, 300);
-	}
+  function openComments(chat: (typeof items)[0]) {
+    selectedChat = chat;
+    isSidebarOpen = true;
+  }
 </script>
 
 <svelte:head>
@@ -39,48 +29,35 @@
 
 <Hero title="Weekly Chats & Videos" subtitle="Connect, share, and grow together" />
 
-{#if validChats.length > 0}
-	<Section class="bg-muted/30">
-		<Container>
-			<Heading class="mb-8">This Week's Videos</Heading>
-			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-				{#each validChats as chat}
-					<div class="flex h-full flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
-						<!-- 16:9 Aspect Ratio Container for Video -->
-						<div class="relative w-full bg-black pt-[56.25%]">
-							<iframe
-								src="https://drive.google.com/file/d/{chat.driveId}/preview"
-								class="absolute left-0 top-0 h-full w-full border-0"
-								allow="autoplay"
-								title={chat.title}
-								allowfullscreen
-							></iframe>
-						</div>
-						<div class="flex flex-1 flex-col p-6">
-							{#if chat.date}
-								<div class="mb-2 text-sm text-muted-foreground">{chat.date}</div>
-							{/if}
-							<h3 class="mb-3 text-xl font-semibold">{chat.title}</h3>
-							{#if chat.description}
-								<p class="flex-1 text-sm text-muted-foreground">{chat.description}</p>
-							{/if}
-							<div class="mt-4 flex items-center justify-end pt-4">
-								<Button variant="outline" size="sm" onclick={() => openComments(chat)}>
-									<MessageSquare class="mr-2 h-4 w-4" />
-									Comments
-								</Button>
-							</div>
-						</div>
-					</div>
-				{/each}
-			</div>
-		</Container>
-	</Section>
-	<Separator />
+{#if items.length > 0}
+  <Section class="bg-muted/30">
+    <Container>
+      <Heading class="mb-8">This Week's Videos</Heading>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {#each items as chat}
+          <div class="flex h-full flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="p-0">
+              <VideoCard title={chat.title} thumbnail={chat.thumbnail} url={chat.url} publishedAt={chat.publishedAt} />
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="mb-3 text-xl font-semibold">{chat.title}</h3>
+              <div class="mt-4 flex items-center justify-end pt-4">
+                <Button variant="outline" size="sm" onclick={() => openComments(chat)}>
+                  <MessageSquare class="mr-2 h-4 w-4" />
+                  Comments
+                </Button>
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </Container>
+  </Section>
+  <Separator />
 {/if}
 
 {#if selectedChat}
-	<CommentSidebar bind:open={isSidebarOpen} title={selectedChat.title} id={selectedChat.driveId} />
+  <CommentSidebar bind:open={isSidebarOpen} title={selectedChat.title} id={selectedChat.url} />
 {/if}
 
 <Section>

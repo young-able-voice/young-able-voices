@@ -67,11 +67,8 @@
 			{/each}
 		</nav>
 
-		<div class="flex items-center gap-2">
-			<Button class="hidden h-9 sm:inline-flex">
-				Donate
-			</Button>
-			<ThemeToggle class="h-9 w-9" />
+        <div class="flex items-center gap-2">
+            <ThemeToggle class="h-9 w-9" />
 			<Button
 				variant="ghost"
 				size="icon"
@@ -119,9 +116,7 @@
 						</a>
 					{/if}
 				{/each}
-				<Button class="mt-4 h-9 w-full sm:hidden">
-					Donate
-				</Button>
+                <!-- Donate button removed -->
 			</div>
 		</div>
 	{/if}
