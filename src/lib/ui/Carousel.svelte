@@ -32,26 +32,24 @@
 </script>
 
 <div class="relative overflow-hidden rounded-xl border bg-muted">
-  <div class="aspect-square flex items-center justify-center">
-    {#if items[currentIndex]?.image}
-      <div class="flex h-full w-full items-center justify-center">
-        <img
-          src={items[currentIndex].image}
-          alt={items[currentIndex].title || ''}
-          class="max-h-full max-w-full object-contain p-4"
-        />
-      </div>
-    {:else}
-      <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/5 to-muted">
-        <div class="text-center">
-          <div class="mx-auto mb-4 h-20 w-20 rounded-xl bg-muted"></div>
-          {#if items[currentIndex]?.title}
-            <p class="font-medium">{items[currentIndex].title}</p>
-          {/if}
-        </div>
-      </div>
-    {/if}
-  </div>
+	<div class="aspect-video">
+		{#if items[currentIndex]?.image}
+			<img
+				src={items[currentIndex].image}
+				alt={items[currentIndex].title || ''}
+				class="h-full w-full object-cover"
+			/>
+		{:else}
+			<div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/5 to-muted">
+				<div class="text-center">
+					<div class="mx-auto mb-4 h-20 w-20 rounded-xl bg-muted"></div>
+					{#if items[currentIndex]?.title}
+						<p class="font-medium">{items[currentIndex].title}</p>
+					{/if}
+				</div>
+			</div>
+		{/if}
+	</div>
 
 	{#if items.length > 1}
 		<Button
