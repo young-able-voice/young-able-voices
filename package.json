@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "BASE_PATH='/young-able-voices' vite build && touch build/.nojekyll && bunx gh-pages -d build --dotfiles",
+        "build": "BASE_PATH='/young-able-voices' vite build && touch build/.nojekyll && node -e \"require('fs').writeFileSync('build/CNAME','youngablevoices.org')\" && bunx gh-pages -d build --dotfiles",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
