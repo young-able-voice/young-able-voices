@@ -3,10 +3,13 @@
 	import { theme } from '$lib/stores/theme.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-  let { children } = $props();
+	import { page } from '$app/state';
+	let { children } = $props();
 	$effect(() => {
 		theme.value;
 	});
+
+	let isLinksPage = $derived(page.url.pathname.startsWith('/links'));
 </script>
 
 <svelte:head>
@@ -22,7 +25,11 @@
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-[var(--background)] text-[var(--foreground)]">
-	<Nav />
+	{#if !isLinksPage}
+		<Nav />
+	{/if}
 	<main class="flex-1">{@render children()}</main>
-	<Footer />
+	{#if !isLinksPage}
+		<Footer />
+	{/if}
 </div>

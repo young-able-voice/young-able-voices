@@ -44,7 +44,7 @@
 							<ChevronDown class="h-4 w-4" />
 						</a>
 						<div
-							class="invisible absolute left-0 top-full z-50 mt-1 w-48 rounded-md border bg-popover p-1 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100"
+							class="invisible absolute left-0 top-full z-50 mt-1 w-48 rounded-md border bg-popover p-1 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:bg-[oklch(0.367_0.119_255.585)]"
 						>
 							{#each link.children as child}
 								<a

@@ -75,3 +75,9 @@
     <Button href="{base}/contact" class="mt-6"> Sign Up </Button>
   </Container>
 </Section>
+
+<Section class="py-12">
+  <Container size="sm" class="text-center">
+    <img src="{base}/apraxia-kids-logo.jpg" alt="Apraxia Kids" class="mx-auto max-w-[300px]" />
+  </Container>
+</Section>
